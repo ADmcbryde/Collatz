@@ -1,18 +1,17 @@
-using System;
 
 public class Coll{
 
-	static public void Main(String[] args){	
+	public static void main(String[] args){	
 
 		//stores the top ten highest values and the steps to 1
-		long[,] maxValues = new long[2,10];
+		long maxValues[][] = new long[2][10];
 	
 		//the location of the minimum value in the array
 		int minVal = 0;	
 
 		//Main loop that goes through all values between 2 and 5000000000
 		//	Top value has the L suffix since literals are interpreted as integers	
-		for (long i = 2; i < 10000000; i++){
+		for (long i = 2; i < 5000000000L; i++){
 	
 			//col holds the value of the iterated number
 			long col = i;
@@ -26,24 +25,24 @@ public class Coll{
 				col = collatzStep(col);
 				//simple check to avoid infinite loop due to overflow
 				if(col < 0){
-					Console.WriteLine("overflow occured");
+					System.out.println("overflow occured");
 					break;
 				}			
 			}	
 
-			if(count > maxValues[0,minVal]){
+			if(count > maxValues[0][minVal]){
 				
 				for(int j = 0; j < 10; j++){
 					 
 					if (j == minVal){
-						maxValues[0,j] = count;
-						maxValues[1,j] = i;
+						maxValues[0][j] = count;
+						maxValues[1][j] = i;
 					}
 				}
 				minVal = 0;
 				
 				for(int j = 0; j < 10; j++){
-					if (maxValues[0,j] < maxValues[0,minVal]){
+					if (maxValues[0][j] < maxValues[0][minVal]){
 						minVal = j;
 					}
 				}
@@ -55,7 +54,7 @@ public class Coll{
 	
 		for(int i = 0; i < 10; i++){
 	
-			Console.WriteLine("Value: " + maxValues[1,i] + " Steps Taken: " + maxValues[0,i]);
+			System.out.println("Value: " + maxValues[1][i] + " Steps Taken: " + maxValues[0][i]);
 	
 		}
 
