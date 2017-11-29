@@ -1,3 +1,10 @@
+/* CSC 330
+ * Assignmant 3 - Collatz Conjecture
+ *
+ * Author: Devin McBryde
+ *
+ *
+ */
 
 public class Coll{
 

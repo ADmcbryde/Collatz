@@ -54,6 +54,7 @@ int main(){
 		}	
 			if(count > maxValues[0][minVal]){
 				//cout << "right here" << endl;
+				
 				for(int j = 0; j < 10; j++){
 					//cout << "in for" << endl; 
 					if (j == minVal){
@@ -70,7 +71,6 @@ int main(){
 				}
 
 			}
-		
 
 	}
 
