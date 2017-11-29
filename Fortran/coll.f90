@@ -71,7 +71,7 @@ program coll
 	end do
 
 	do i = 1, 10
-		print *, "Values", maxValues(1,i), " num", maxValues(2,i)
+		print *, "Values:", maxValues(1,i), " Steps Taken:", maxValues(2,i)
 	end do
 
 

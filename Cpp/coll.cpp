@@ -76,7 +76,7 @@ int main(){
 
 	for(int i = 0; i < 10; i++){
 
-		cout << "Value: " << maxValues[1][i] << " Steps Taken: " << maxValues[0][i] << endl;
+		cout << "Value: " << maxValues[0][i] << " Steps Taken: " << maxValues[1][i] << endl;
 
 	}
 

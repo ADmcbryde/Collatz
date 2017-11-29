@@ -18,7 +18,7 @@ public class Coll{
 
 		//Main loop that goes through all values between 2 and 5000000000
 		//	Top value has the L suffix since literals are interpreted as integers	
-		for (long i = 2; i < 5000000000L; i++){
+		for (long i = 2; i < 1000L; i++){
 	
 			//col holds the value of the iterated number
 			long col = i;
@@ -61,7 +61,7 @@ public class Coll{
 	
 		for(int i = 0; i < 10; i++){
 	
-			System.out.println("Value: " + maxValues[1][i] + " Steps Taken: " + maxValues[0][i]);
+			System.out.println("Value: " + maxValues[0][i] + " Steps Taken: " + maxValues[1][i]);
 	
 		}
 
