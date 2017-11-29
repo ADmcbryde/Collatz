@@ -37,7 +37,7 @@ int main(){
 
 	//The max value for int is 113383
 
-	for (long i = 2; i < 5000000000; i++){
+	for (long i = 2; i < 1000; i++){
 
 		long col = i;
 		long count = 0;
