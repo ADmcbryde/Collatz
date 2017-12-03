@@ -18,7 +18,7 @@
 	(setf (aref maxValues 0 i) 0)
 )
 
-(loop for i from 2 to 5000000000
+(loop for i from 2 to 1000000
     do 
 
 	(setf col i)
