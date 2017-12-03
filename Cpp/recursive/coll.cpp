@@ -11,7 +11,7 @@
 
 using namespace std;
 
-long collatzStep(long input, bool &numStep);
+int collatzStep(long input);
 //void listSort(int* list);
 
 
@@ -37,12 +37,12 @@ int main(){
 
 	//The max value for int is 113383
 
-	for (long i = 2; i < 5000000000; i++){
+	for (long i = 2; i < 1000; i++){
 
 		long col = i;
 		long count = 0;
 
-		while(col != 1){
+		/*while(col != 1){
 	
 			count += 1;
 			col = collatzStep(col, twoStep);
@@ -51,7 +51,10 @@ int main(){
 				return 1;
 			}			
 //cout << col << endl;
-		}	
+		}*/
+
+		count = collatzStep(col);
+	
 			if(count > maxValues[0][minVal]){
 				//cout << "right here" << endl;
 				
@@ -86,17 +89,20 @@ int main(){
 
 }
 
-long collatzStep(long input, bool &numStep){
+int collatzStep(long input){
 
-	//int bit;
+	int counter = 0;
 
-	if(input%2 == 1){
-		input = input*3 +1;
+	if(input == 1){
+		return 0;
+	}else if(input%2 == 1){
+		counter += collatzStep(input*3 +1);
 	}else{
-		input = input/2;
+		counter += collatzStep(input/2);
 	}
 
-	return input;
+	counter = counter+1;
+	return counter;
 
 }
 

@@ -6,30 +6,32 @@ minVal = 1
 
 function collatzStep(a)
 
-	if a % 2 == 1
-		a = a*3 + 1
+	counter = 0
+	
+	if a == 1
+		return 0
+	elseif a % 2 == 1
+		counter += collatzStep(a*3 + 1)
 	else
-		a = a/2
+		counter += collatzStep(a/2)
 	end
 
-	return a
+	counter = counter + 1
+
+	return counter
 
 end 
 
 maxValues[1,4] = 1
 
-for i = 2:5000000000
+for i = 2:1000
 
 
 	col = i
 	stepCount = 0
 
-	while col != 1
+	stepCount = collatzStep(col)
 
-		stepCount = stepCount + 1
-		col = collatzStep(col)
-
-	end
 
 	if stepCount > maxValues[1,minVal]
 

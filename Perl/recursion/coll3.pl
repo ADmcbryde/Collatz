@@ -7,17 +7,19 @@ sub collatzStep{
 
 	my $input = $_[0];
 
-	#print $input, "\n";
+	my $counter = 0;
 
-	if($input%2 == 1 ){
-		$input = $input *3 +1;
+	if($input == 1){
+		return 0;
+	}elsif($input%2 == 1 ){
+		$counter += collatzStep($input *3 +1);
 	}else{
-		$input = $input /2;
+		$counter += collatzStep($input /2);
 	}
 
-	
+	$counter = $counter + 1;
 
-	return $input;
+	return $counter;
 }
 
 
@@ -35,19 +37,14 @@ for(my $i = 0; $i < 20; $i = $i + 1){
 }
 
 #loop
-for(my $i = 2; $i < 5000000000; $i = $i + 1){
+for(my $i = 2; $i < 1000; $i = $i + 1){
 
 	$col = $i;
 	$count = 0;
 
 	#print $i, "\n";
 
-	#loop
-	while($col != 1){
-		$count = $count + 1;
-		$col = collatzStep($col);
-		#print $col, "\n";
-	}
+	$count = collatzStep($col);
 
 	#print "after loop\n";
 

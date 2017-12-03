@@ -36,21 +36,20 @@ program coll
 
 	!print *, collatzStep(valRange)
 
-	do i = 2, finish
+	do i = 2, 1000
 
 		col = i
 		stepCount = 0
 
-		do while (col .ne. 1)
-			
-			stepCount = stepCount + 1
-			col = collatzStep(col)
-			!print *, col
+!		do while (col .ne. 1)
+!			
+!			stepCount = stepCount + 1
+!			col = collatzStep(col)
+!			!print *, col
+!
+!		end do
 
-
-
-
-		end do
+		stepCount = collatzStep(col);
 
 		!print *, i
 
@@ -76,22 +75,28 @@ program coll
 	end do
 
 	do i = 1, 10
-		print *, "Values:", maxValues(1,i), " Steps Taken:", maxValues(2,i)
+		print *, "Values:", maxValues(2,i), " Steps Taken:", maxValues(1,i)
 	end do
 
 
 end program coll
 
-integer(kind=16) function collatzStep(input)
+recursive integer(kind=16) function collatzStep(input) result(counter)
 
-	integer(kind=16) :: input
+	!integer(kind=8) :: counter
 
-	if (MOD(input,2) .eq. 1) then
-		input = input*3+1
-	else
-		input = input / 2
+	if (input .eq. 1) then
+		!collatzStep = 0
+		counter = 0
+	else if (MOD(input,2) .eq. 1) then
+		counter = collatzStep(input*3+1)
+		counter = counter + 1 
+		!collatzStep = counter
+	else 
+		counter = collatzStep(input / 2)
+		counter = counter + 1 
+		!collatzStep = counter
 	end if
 
-	collatzStep = input
 
 end function collatzStep

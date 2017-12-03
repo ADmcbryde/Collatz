@@ -7,6 +7,23 @@
 ;
 ;
 
+(defun collatzStep (input)
+	(defvar counter)
+	(setf counter 0)
+
+	(if (= input 1)
+		(return-from collatzStep 0)
+		(if (= (mod input 2) 1)
+			(setf counter (collatzStep (+ (* input 3) 1) ) )
+			(setf counter (collatzStep (/ input 2)  ) )
+		)
+	)
+
+	(setf counter (+ counter 1))
+	(return-from collatzStep counter)
+
+)
+
 (defvar maxValues)
 (setf maxValues(make-array (list 2 10)))
 
@@ -18,27 +35,14 @@
 	(setf (aref maxValues 0 i) 0)
 )
 
-(loop for i from 2 to 5000000000
+(loop for i from 2 to 1000
     do 
 
 	(setf col i)
 	(setf stepCount 0)
 
 	;while loop
-	(loop
-
-		(setf stepCount (+ stepCount 1))
-
-		(if (= (mod col 2) 1)
-			(setf col (+ (* col 3) 1))
-			(setf col (/ col 2))
-		)
-
-		(when (= col 1) (return 0))
-
-		;(format t "~w" col)
-
-	)
+	(setf stepCount (collatzStep col))
 
 	;if
 	(if (> stepCount (aref maxValues 0 minVal))

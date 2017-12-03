@@ -6,30 +6,28 @@ minVal = 0
 
 def collatzStep (input)
 
-	if input%2 == 1
-		input = input *3 + 1
+	counter = 0
+	if input == 1
+		return 0
+	elsif input%2 == 1
+		counter += collatzStep(input *3 + 1)
 	else
-		input = input/2
+		counter += collatzStep(input/2)
 	end
 
-	return input
+	counter = counter + 1
+
+	return counter
 
 end
 
 
-for i in 2..5000000000
+for i in 2..1000
 
 	col = i
 	count = 0
 
-	while col != 1 do
-
-		count = count + 1
-		col = collatzStep col
-
-		
-
-	end
+	count = collatzStep col
 		
 	if count > maxValues[0][minVal]
 

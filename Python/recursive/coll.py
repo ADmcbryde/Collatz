@@ -11,33 +11,38 @@ minVal = 0
 
 def collatzStep(a):
 
+	counter = 0
 
-	if ( (a%2) == 1) :
-		a = a*3+1
+	if (a == 1):
+		return counter
+	elif ( (a%2) == 1) :
+		counter = collatzStep(a*3+1)
 	else:
-		a = a/2
+		counter = collatzStep(a/2)
 
-	return a
+	counter = counter + 1
+	return counter
 
 #for x in range(10):
 	#print maxValues[x][0]
 
 
-for x in range(2, 1000000000):
+for x in range(2, 1000):
 	col = x
 	count = 0
 
-	while(col != 1):
+	#while(col != 1):
 		
-		count += 1
+	#	count += 1
 		#col = collatzStep(col)
-		if ( (col%2) == 1) :
-			col = col*3+1
-		else:
-			col = col/2
+	#	if ( (col%2) == 1) :
+	#		col = col*3+1
+	#	else:
+	#		col = col/2
 
 		#return a
 		
+	count = collatzStep(col)
 
 	if (count > maxValues[minVal][0]):
 

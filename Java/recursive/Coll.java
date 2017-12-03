@@ -5,21 +5,20 @@
  *
  *
  */
-using System;
 
 public class Coll{
 
-	static public void Main(String[] args){	
+	public static void main(String[] args){	
 
 		//stores the top ten highest values and the steps to 1
-		long[,] maxValues = new long[2,10];
+		long maxValues[][] = new long[2][10];
 	
 		//the location of the minimum value in the array
 		int minVal = 0;	
 
 		//Main loop that goes through all values between 2 and 5000000000
 		//	Top value has the L suffix since literals are interpreted as integers	
-		for (long i = 2; i < 5000000000; i++){
+		for (long i = 2; i < 1000L; i++){
 	
 			//col holds the value of the iterated number
 			long col = i;
@@ -27,30 +26,25 @@ public class Coll{
 			long count = 0;
 	
 			//Here we iterate values until they hit 1
-			while(col != 1){
+			//while(col != 1){
 		
-				count += 1;
-				col = collatzStep(col);
+				count = collatzStep(col);
 				//simple check to avoid infinite loop due to overflow
-				if(col < 0){
-					Console.WriteLine("overflow occured");
-					break;
-				}			
-			}	
+			//}	
 
-			if(count > maxValues[0,minVal]){
+			if(count > maxValues[0][minVal]){
 				
 				for(int j = 0; j < 10; j++){
 					 
 					if (j == minVal){
-						maxValues[0,j] = count;
-						maxValues[1,j] = i;
+						maxValues[0][j] = count;
+						maxValues[1][j] = i;
 					}
 				}
 				minVal = 0;
 				
 				for(int j = 0; j < 10; j++){
-					if (maxValues[0,j] < maxValues[0,minVal]){
+					if (maxValues[0][j] < maxValues[0][minVal]){
 						minVal = j;
 					}
 				}
@@ -62,7 +56,7 @@ public class Coll{
 	
 		for(int i = 0; i < 10; i++){
 	
-			Console.WriteLine("Value: " + maxValues[0,i] + " Steps Taken: " + maxValues[1,i]);
+			System.out.println("Value: " + maxValues[1][i] + " Steps Taken: " + maxValues[0][i]);
 	
 		}
 
@@ -70,13 +64,19 @@ public class Coll{
 
 	private static long collatzStep(long input){
 	
-		if(input%2 == 1){
-			input = input*3 +1;
-			}else{
-			input = input/2;
+		int count = 0;
+
+		if(input == 1){
+			return 0;
+		}else if(input%2 == 1){
+			count += collatzStep(input*3+1);
+		}else{
+			count += collatzStep(input/2);
 		}
-	
-		return input;
+
+		count++;
+		return count;
+
 	
 	}
 }

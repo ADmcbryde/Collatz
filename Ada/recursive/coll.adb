@@ -1,10 +1,13 @@
 with Ada.Text_IO;
+with Ada.Integer_Text_IO;
 with Ada.Long_Integer_Text_IO;
 
 use Ada.Text_IO;
 --function collatzStep (input: Integer) return Integer is
 --begin
-	
+--	if 1 = 1 then
+--		return 0;
+--	end if;
 	
 
 --end collatzStep;
@@ -16,6 +19,27 @@ procedure coll is
 
 	col		:Long_Integer;
 	stepCount	:Long_Integer;
+
+	function collatzStep (input: Long_Integer) return Long_Integer is
+		counter		:Long_Integer;
+
+		begin		
+
+		counter := 0;
+
+		if input = 1 then
+			return 0;
+		elsif input mod 2 = 1 then
+			counter := counter + collatzStep(input*3+1);
+		else
+			counter := counter + collatzStep(input/2);
+		end if;
+	
+		counter := counter + 1;
+		return counter;
+
+
+	end collatzStep;
 
 begin
 
@@ -30,22 +54,13 @@ begin
 
 	minValue := 1;
 
-	for i in Long_Integer(1)..Long_Integer(5000000000) loop
+	for i in Long_Integer(1)..Long_Integer(1000) loop
 
 		col := i;
 		stepCount := 0;
 
-		while col /= 1 loop
-
-			stepCount := stepCount + 1;
-			if col mod 2 = 1 then
-				col := col * 3 + 1;
-			else
-				col := col / 2;
-			end if;
-
-		end loop;
-
+		stepCount := collatzStep(col);
+	
 		if stepCount > maxValues(1,minValue) then
 
 			for j in 1..10 loop
