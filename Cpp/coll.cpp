@@ -37,7 +37,7 @@ int main(){
 
 	//The max value for int is 113383
 
-	for (long i = 2; i < 1000000; i++){
+	for (long i = 2; i < 5000000000; i++){
 
 		long col = i;
 		long count = 0;
@@ -76,7 +76,7 @@ int main(){
 
 	for(int i = 0; i < 10; i++){
 
-		cout << "Value: " << maxValues[0][i] << " Steps Taken: " << maxValues[1][i] << endl;
+		cout << "Value: " << maxValues[1][i] << " Steps Taken: " << maxValues[0][i] << endl;
 
 	}
 
