@@ -25,7 +25,7 @@ public class Coll{
 			long col = i;
 			//count tracks the number of iterations total
 			long count = 0;
-	
+
 			//Here we iterate values until they hit 1
 			while(col != 1){
 		
@@ -62,7 +62,7 @@ public class Coll{
 	
 		for(int i = 0; i < 10; i++){
 	
-			Console.WriteLine("Value: " + maxValues[0,i] + " Steps Taken: " + maxValues[1,i]);
+			Console.WriteLine("Value: " + maxValues[1,i] + " Steps Taken: " + maxValues[0,i]);
 	
 		}
 
