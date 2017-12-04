@@ -40,14 +40,27 @@ for(my $i = 2; $i < 1000000; $i = $i + 1){
 	$col = $i;
 	$count = 0;
 
+	#if(($col % 100000) == 0){
+	#	print $col, " \n";
+	#}
+
 	#print $i, "\n";
 
 	#loop
-	while($col != 1){
-		$count = $count + 1;
-		$col = collatzStep($col);
-		#print $col, "\n";
+	while($col > 1){
+		$count += 1;
+		
+		if($col&1){
+			$col = ($col*3 +1)>>1;
+			$count += 1;
+		}else{
+			$col = $col>>1;
+		}
+
+		#$col = ($col*3+1)*($col&1)+($col>>1)*(($col-1)&1);
 	}
+
+	#print $col, " ", $count, " \n";
 
 	#print "after loop\n";
 
@@ -69,6 +82,7 @@ for(my $i = 2; $i < 1000000; $i = $i + 1){
 			}
 		}
 	}
+
 }
 
 for(my $i = 0; $i < 10; $i = $i + 1){

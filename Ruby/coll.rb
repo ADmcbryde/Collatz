@@ -4,7 +4,7 @@ maxValues = [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]
 
 minVal = 0
 
-def collatzStep (input)
+def collatzStep!(input)
 
 	if input%2 == 1
 		input = input *3 + 1
@@ -17,17 +17,24 @@ def collatzStep (input)
 end
 
 
-for i in 2..5000000000
+for i in 2..1000000
 
 	col = i
 	count = 0
 
 	while col != 1 do
 
-		count = count + 1
-		col = collatzStep col
+		count += 1
 
-		
+		#col = collatzStep!(col)
+
+		if col%2 == 1
+			col = col*3 + 1
+			col = col/2
+			count+=1
+		else
+			col = col/2
+		end
 
 	end
 		
@@ -59,5 +66,5 @@ for i in 2..5000000000
 end
 
 for i in 0..9
-	print "Values: ", maxValues[0][i], " Steps Taken: ", maxValues[1][i], "\n"
+	print "Values: ", maxValues[1][i], " Steps Taken: ", maxValues[0][i], "\n"
 end
