@@ -20,6 +20,12 @@ public class Coll{
 		//	Top value has the L suffix since literals are interpreted as integers	
 		for (long i = 2; i < 1000000L; i++){
 	
+			//if(i % 10000000 == 0){
+			//	System.out.println(i);
+			//}
+
+			boolean alreadyexists = false;
+
 			//col holds the value of the iterated number
 			long col = i;
 			//count tracks the number of iterations total
@@ -28,17 +34,33 @@ public class Coll{
 			//Here we iterate values until they hit 1
 			while(col != 1){
 		
-				count += 1;
-				col = collatzStep(col);
+				//count += 1;
+				//col = collatzStep(col);
 				//simple check to avoid infinite loop due to overflow
-				if(col < 0){
+				
+				if((col&1L) == 1){
+					col = (col*3+1)>>1;
+					count += 2;
+				}else{
+					col = col>>1;
+					count += 1;
+				}			
+				
+				/*if(col < 0){
 					System.out.println("overflow occured");
 					break;
-				}			
+				}*/			
 			}	
 
-			if(count > maxValues[0][minVal]){
-				
+
+			for(int j = 0; j < 10; j++){
+				if (count == maxValues[0][j]){
+					alreadyexists = true;
+				}
+			}
+
+			if(count > maxValues[0][minVal] && !alreadyexists){
+
 				for(int j = 0; j < 10; j++){
 					 
 					if (j == minVal){
@@ -61,9 +83,11 @@ public class Coll{
 	
 		for(int i = 0; i < 10; i++){
 	
-			System.out.println("Value: " + maxValues[0][i] + " Steps Taken: " + maxValues[1][i]);
+			System.out.println("Value: " + maxValues[1][i] + " Steps Taken: " + maxValues[0][i]);
 	
 		}
+
+		System.out.println(minVal);
 
 	}
 

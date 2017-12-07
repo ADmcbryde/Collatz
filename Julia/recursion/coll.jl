@@ -24,8 +24,7 @@ end
 
 maxValues[1,4] = 1
 
-for i = 2:1000
-
+for i = 4999990000:5000000000
 
 	col = i
 	stepCount = 0

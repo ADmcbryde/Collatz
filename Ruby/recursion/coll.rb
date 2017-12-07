@@ -22,7 +22,7 @@ def collatzStep (input)
 end
 
 
-for i in 2..1000
+for i in 4999990000..5000000000
 
 	col = i
 	count = 0
@@ -57,5 +57,5 @@ for i in 2..1000
 end
 
 for i in 0..9
-	print "Values: ", maxValues[0][i], " Steps Taken: ", maxValues[1][i], "\n"
+	print "Values: ", maxValues[1][i], " Steps Taken: ", maxValues[0][i], "\n"
 end

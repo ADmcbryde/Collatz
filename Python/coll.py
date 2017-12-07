@@ -35,19 +35,20 @@ def collatz():
 		col = x
 		count = 0
 
-		if (x % 100000 == 0):
-			print x
+		#if (x % 100000 == 0):
+		#	print x
 	
 		while(col > 1):
 			
-			count += 1
+			#count += 1
 			#col = collatzStep(col)
 			if ( (col&1) ) :
 				col = (col*3+1)>>1
-				count += 1
+				count += 2
 			else:
 				col = col>>1
-			
+			        count += 1
+
 			#col = ((col*3+1)>>1) if (col&1) else (col>>1)
 	
 

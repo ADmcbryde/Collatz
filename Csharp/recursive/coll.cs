@@ -27,27 +27,8 @@ public class Coll{
 			long count = 0;
 
 			//Here we iterate values until they hit 1
-			while(col != 1){
-		
-				//count += 1;
-				//col = collatzStep(col);
-
-				//simple check to avoid infinite loop due to overflow
-				/*if(col < 0){
-					Console.WriteLine("overflow occured");
-					break;
-				}*/	
-
-				if((col&1) == 1){
-					col = (col*3 +1)/2;
-					count += 2;
-				}else{
-					col = col/2;
-					count += 1;
-				}
-		
-			}	
-
+			count = collatzStep(col);
+			
 			if(count > maxValues[0,minVal]){
 				
 				for(int j = 0; j < 10; j++){
@@ -78,15 +59,20 @@ public class Coll{
 
 	}
 
-	private static long collatzStep(long input){
-	
-		if(input%2 == 1){
-			input = input*3 +1;
-			}else{
-			input = input/2;
+	private static int collatzStep(long input){
+
+		int stepCount = 0;
+
+		if(input == 1){
+			return 0;
+		}else if(input%2 == 1){
+			stepCount += collatzStep(input*3+1);
+		}else{
+			stepCount += collatzStep(input/2);
 		}
 	
-		return input;
+		stepCount += 1;
+		return stepCount;
 	
 	}
 }

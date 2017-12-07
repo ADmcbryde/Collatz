@@ -12,7 +12,7 @@ program coll
 	integer(kind=16), dimension(2,10) :: maxValues
 	integer(kind=8) :: minValue
 	integer(kind=16) :: col
-	integer(kind=8) :: stepCount
+	integer(kind=16) :: stepCount
 	integer(kind=8) :: valRange
 	integer(kind=16) :: collatzStep
 

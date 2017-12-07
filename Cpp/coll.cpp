@@ -37,7 +37,7 @@ int main(){
 
 	//The max value for int is 113383
 
-	for (long i = 2; i < 5000000000; i++){
+	for (long i = 2; i < 1000000; i++){
 
 		long col = i;
 		long count = 0;
@@ -45,12 +45,18 @@ int main(){
 		while(col != 1){
 	
 			count += 1;
-			col = collatzStep(col, twoStep);
-			if(col < 0){
+			//col = collatzStep(col, twoStep);
+			/*if(col < 0){
 				cout << "overflow occured" << col << endl;
 				return 1;
-			}			
-//cout << col << endl;
+			}*/			
+
+			if(col&1){
+				col = col*3 +1;
+			}else{
+				col = col/2;
+			}
+
 		}	
 			if(count > maxValues[0][minVal]){
 				//cout << "right here" << endl;

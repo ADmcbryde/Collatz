@@ -27,7 +27,7 @@ def collatzStep(a):
 	#print maxValues[x][0]
 
 
-for x in range(2, 1000):
+for x in range(2, 10000):
 	col = x
 	count = 0
 

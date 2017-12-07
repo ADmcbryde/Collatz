@@ -30,18 +30,19 @@ begin
 
 	minValue := 1;
 
-	for i in Long_Integer(1)..Long_Integer(5000000000) loop
+	for i in Long_Integer(1)..Long_Integer(1000000) loop
 
 		col := i;
 		stepCount := 0;
 
 		while col /= 1 loop
 
-			stepCount := stepCount + 1;
 			if col mod 2 = 1 then
-				col := col * 3 + 1;
+				col := (col * 3 + 1)/2;
+				stepCount := stepCount + 2;
 			else
 				col := col / 2;
+				stepCount := stepCount + 1;
 			end if;
 
 		end loop;

@@ -22,8 +22,8 @@ program coll
 
 	do i = 1, 10
 
-	finish = 1000000000
-	finish = finish * 5
+	finish = 1000000
+	!finish = finish * 5
 
 		maxValues(1,i) = 0
 		maxValues(2,i) = 0
@@ -34,8 +34,6 @@ program coll
 
 	valRange = 10
 
-	!print *, collatzStep(valRange)
-
 	do i = 2, finish
 
 		col = i
@@ -43,16 +41,20 @@ program coll
 
 		do while (col .ne. 1)
 			
-			stepCount = stepCount + 1
-			col = collatzStep(col)
-			!print *, col
-
-
+			!stepCount = stepCount + 1
+			!col = collatzStep(col)
+			
+			if (MOD(col,2) .eq. 1) then
+				col = ((col*3)+1)/2
+				stepCount = stepCount + 2
+			else
+				col = col / 2
+				stepCount = stepCount + 1
+			end if
 
 
 		end do
 
-		!print *, i
 
 		if (stepCount > maxValues(1,minValue) ) then
 		
@@ -76,7 +78,7 @@ program coll
 	end do
 
 	do i = 1, 10
-		print *, "Values:", maxValues(1,i), " Steps Taken:", maxValues(2,i)
+		print *, "Values:", maxValues(2,i), " Steps Taken:", maxValues(1,i)
 	end do
 
 

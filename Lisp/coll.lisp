@@ -27,11 +27,17 @@
 	;while loop
 	(loop
 
-		(setf stepCount (+ stepCount 1))
+		;(setf stepCount (+ stepCount 1))
 
-		(if (= (mod col 2) 1)
-			(setf col (+ (* col 3) 1))
-			(setf col (/ col 2))
+		(if (= (logand col 1) 1)
+			(progn
+				(setf col (/ (+ (* col 3) 1) 2))
+				(setf stepCount (+ stepCount 2))			
+			)
+			(progn
+				(setf col (/ col 2))
+				(setf stepCount (+ stepCount 1))
+			)
 		)
 
 		(when (= col 1) (return 0))

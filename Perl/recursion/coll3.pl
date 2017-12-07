@@ -69,6 +69,6 @@ for(my $i = 2; $i < 1000; $i = $i + 1){
 }
 
 for(my $i = 0; $i < 10; $i = $i + 1){
-	print "Value ", $maxValues[0][$i], " Steps Taken: ", $maxValues[1][$i],"\n";
+	print "Value ", $maxValues[1][$i], " Steps Taken: ", $maxValues[0][$i],"\n";
 }
 

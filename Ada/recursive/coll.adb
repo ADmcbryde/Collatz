@@ -87,7 +87,9 @@ begin
 	end loop;
 
 	for i in 1..10 loop
+		Ada.Text_IO.Put("Values:");
 		Ada.Long_Integer_Text_IO.Put(maxValues(2,i));
+		Ada.Text_IO.Put(" Steps Taken:");
 		Ada.Long_Integer_Text_IO.Put(maxValues(1,i));
 		Ada.Text_IO.Put_Line("");
 	end loop;

@@ -24,16 +24,17 @@ for i in 2..1000000
 
 	while col != 1 do
 
-		count += 1
+		#count += 1
 
 		#col = collatzStep!(col)
 
-		if col%2 == 1
-			col = col*3 + 1
-			col = col/2
-			count+=1
+		if col&1 == 1
+			col = (col*3 + 1)>>1
+			#col = col/2
+			count+=2
 		else
-			col = col/2
+			col = col>>1
+			count+=1
 		end
 
 	end

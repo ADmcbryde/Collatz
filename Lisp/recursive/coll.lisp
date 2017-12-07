@@ -6,9 +6,9 @@
 ;
 ;
 ;
-
+(defvar counter)
 (defun collatzStep (input)
-	(defvar counter)
+	;(defvar counter)
 	(setf counter 0)
 
 	(if (= input 1)

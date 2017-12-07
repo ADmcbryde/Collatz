@@ -35,7 +35,7 @@ for(my $i = 0; $i < 20; $i = $i + 1){
 }
 
 #loop
-for(my $i = 2; $i < 5000000000; $i = $i + 1){
+for(my $i = 2; $i < 1000000; $i = $i + 1){
 
 	$col = $i;
 	$count = 0;

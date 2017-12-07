@@ -18,24 +18,26 @@ end
 
 maxValues[1,4] = 1
 
-for i::Int64 = 2:5000000000
+for i::Int64 = 2:1000000
 
 
 	col::Int64 = i
 	stepCount::Int64 = 0
 
-	if i % 100000 == 0
+	#if i % 100000 == 0
 		#println(i)
-	end
+	#end
 
 	while col != 1
 
-		stepCount = stepCount + 1
+		#stepCount += 1
 
 		if col%2 == 1
-			col = col*3 + 1
+			col = (col*3 + 1)>>1
+			stepCount += 2
 		else
 			col = col>>1
+			stepCount += 1
 		end
 
 	end
