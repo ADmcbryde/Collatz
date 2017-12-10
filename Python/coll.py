@@ -30,7 +30,7 @@ def collatz():
 	
 	x = 2
 
-	while(x < 1000000):
+	while(x < 10000000):
 	
 		col = x
 		count = 0
@@ -38,7 +38,7 @@ def collatz():
 		#if (x % 100000 == 0):
 		#	print x
 	
-		while(col > 1):
+		while(col != 1):
 			
 			#count += 1
 			#col = collatzStep(col)

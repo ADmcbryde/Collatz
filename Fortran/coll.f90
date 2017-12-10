@@ -16,13 +16,17 @@ program coll
 	integer(kind=8) :: valRange
 	integer(kind=16) :: collatzStep
 
+        integer(kind=16) :: test
+
 	integer(kind=8) :: i, j, k
 
 	integer(kind=16) :: finish
 
+        test = 1
+
 	do i = 1, 10
 
-	finish = 1000000
+	finish = 100000000
 	!finish = finish * 5
 
 		maxValues(1,i) = 0
@@ -44,8 +48,9 @@ program coll
 			!stepCount = stepCount + 1
 			!col = collatzStep(col)
 			
-			if (MOD(col,2) .eq. 1) then
-				col = ((col*3)+1)/2
+			!if (MOD(col,2) .eq. 1) then
+                        if (IAND(col,test) .eq. 1) then
+                                col = ((col*3)+1)/2
 				stepCount = stepCount + 2
 			else
 				col = col / 2
