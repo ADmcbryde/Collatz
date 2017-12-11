@@ -10,25 +10,27 @@
 #strict requires for specific syntax with perl while warnings
 #	enables warnings if certain actions occur during runtime
 use strict;
-use warnings;
+#use warnings;
 
-#Function that will perform a collatz step
 sub collatzStep{
 
 	my $input = $_[0];
 
-	#print $input, "\n";
+	my $counter = 0;
 
-	if($input%2 == 1 ){
-		$input = $input *3 +1;
+	if($input == 1){
+		return 0;
+	}elsif($input%2 == 1 ){
+		$counter += collatzStep($input *3 +1);
 	}else{
-		$input = $input /2;
+		$counter += collatzStep($input /2);
 	}
 
-	
+	$counter = $counter + 1;
 
-	return $input;
+	return $counter;
 }
+
 
 #stores the top ten highest values and the steps to 1
 my @maxValues;
@@ -61,37 +63,7 @@ for(my $i = 2; $i < 1000000; $i = $i + 1){
 	$col = $i;
 	$count = 0;
 
-	#Here we iterate values until they hit 1
-	while($col > 1){
-
-		
-
-		#next two lines use the function, however the program then
-		#	runs much slower
-
-		#$count += 1;
-		#$col = collatzStep(col);
-		
-		#This if statement will perform the operations the collatz sequence
-		if($col&1){
-
-			#If the number is odd the next number must be even
-			#	therefore we can avoid logic checks by 
-			#	performing both operations and adding 2
-			#	to the count
-			$col = ($col*3 +1)>>1;
-			$count += 2;
-		}else{
-			#If the number is even we divide by two and add one to count
-
-			$col = $col>>1;
-			$count += 1;
-		}
-
-		#can replace the if statements and will accomplish the
-		#	same goal, however tests have shown it to be slower
-		#$col = ($col*3+1)*($col&1)+($col>>1)*(($col-1)&1);
-	}
+	$count = collatzStep($col);
 
 	#Here we avoid having a value with a duplicate number of steps using the boolean flag
 	for(my $z = 0; $z < 10; $z = $z + 1){

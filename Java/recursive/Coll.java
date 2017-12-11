@@ -18,22 +18,30 @@ public class Coll{
 
 		//Main loop that goes through all values between 2 and 5000000000
 		//	Top value has the L suffix since literals are interpreted as integers	
-		for (long i = 2; i < 1000L; i++){
+		for (long i = 1L; i < 10000000L; i++){
+
+			boolean alreadyexists = false;
 	
+			//reset the next two values for the new number
 			//col holds the value of the iterated number
 			long col = i;
 			//count tracks the number of iterations total
 			long count = 0;
-	
-			//Here we iterate values until they hit 1
-			//while(col != 1){
-		
-				count = collatzStep(col);
-				//simple check to avoid infinite loop due to overflow
-			//}	
 
-			if(count > maxValues[0][minVal]){
+			//count is given the number of steps for the given value to collatzStep to return to one		
+			count = collatzStep(col);
+
+			//Here we avoid having a value with a duplicate number of steps using the boolean flag
+			for(int j = 0; j < 10; j++){
+				//We check if our count has been recorded already
+				if (count == maxValues[0][j]){
+					alreadyexists = true;
+				}
+			}
+
+			if(count > maxValues[0][minVal] && !alreadyexists){
 				
+				//here we replace the value of the smallest count
 				for(int j = 0; j < 10; j++){
 					 
 					if (j == minVal){
@@ -41,8 +49,11 @@ public class Coll{
 						maxValues[1][j] = i;
 					}
 				}
+
+				//we now reset the minVal to look for the new lowest count value
 				minVal = 0;
 				
+				//search for the smallest count size in maxValues
 				for(int j = 0; j < 10; j++){
 					if (maxValues[0][j] < maxValues[0][minVal]){
 						minVal = j;
@@ -53,7 +64,36 @@ public class Coll{
 			
 	
 		}
+
+		//Now we perform a basic selection sort on the step count before printing
+		for(int i = 0; i < 9; i++){
+
+			long minValue = maxValues[0][i];
+			long minColNum = maxValues[1][i];
+			int minLocale = i;
 	
+			for(int j = i+1; j < 10; j++){
+	
+				if(minValue < maxValues[0][j]){
+					minValue = maxValues[0][j];
+					minColNum = maxValues[1][j];
+					minLocale = j;
+				}
+	
+			}
+	
+			long tempVal = maxValues[0][i];
+			long tempNum = maxValues[1][i];
+	
+			maxValues[0][i] = minValue;
+			maxValues[0][minLocale] = tempVal;
+	
+			maxValues[1][i] = minColNum;
+			maxValues[1][minLocale] = tempNum;
+	
+		}
+	
+		//print the maxValues array
 		for(int i = 0; i < 10; i++){
 	
 			System.out.println("Value: " + maxValues[1][i] + " Steps Taken: " + maxValues[0][i]);
@@ -62,6 +102,8 @@ public class Coll{
 
 	}
 
+	//recursive function that return the number of steps needed to return
+	//	to one for the input number
 	private static long collatzStep(long input){
 	
 		int count = 0;

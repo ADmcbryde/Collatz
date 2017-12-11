@@ -1,0 +1,3 @@
+To compile and run(for both iterative and recursive)
+	javac Coll.java
+	java Coll
