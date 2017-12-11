@@ -48,8 +48,8 @@ program coll
 	!here we initialize maxValues to zeroes
 	do i = 1, 10
 
-	finish = 1000000000
-	finish = finish * 5
+	finish = 1000000
+	!finish = finish * 5
 
 		maxValues(1,i) = 0
 		maxValues(2,i) = 0

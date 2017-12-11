@@ -18,7 +18,7 @@ public class Coll{
 
 		//Main loop that goes through all values between 2 and 5000000000
 		//	Top value has the L suffix since literals are interpreted as integers	
-		for (long i = 1L; i < 10000000L; i++){
+		for (long i = 1L; i < 1000000L; i++){
 
 			boolean alreadyexists = false;
 	

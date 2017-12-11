@@ -140,3 +140,4 @@ end
 for i = 1:10
 	println("Values: ", maxValues[2,i]," Steps Taken: ", maxValues[1,i])
 end
+
