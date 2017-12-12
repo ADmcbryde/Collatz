@@ -33,13 +33,13 @@ i = parse(BigInt,"1000000000000000")
 
 #Main loop that goes through all values between 2 and 5000000000
 #	Top value has the L suffix since literals are interpreted as integers
-while i > 999999999000000
+while i > 999999999900000
 
 	alreadyexists = 0
 
 	#reset the next twp values for the new number
 	#col holds the value of the iterated number
-	col::Int64 = i
+	col::BigInt = i
 	#stepCount tracks the number of iterations total	
 	stepCount::Int64 = 0
 
@@ -60,11 +60,11 @@ while i > 999999999000000
 			#	therefore we can avoid logic checks by 
 			#	performing both operations and adding 2
 			#	to the count
-			col = (col*3 + 1)>>1
+			col = (col*3 + 1)/2
 			stepCount += 2
 		else
 			#If the number is even we divide by two and add one to count
-			col = col>>1
+			col = col/2
 			stepCount += 1
 		end
 
