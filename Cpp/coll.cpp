@@ -17,7 +17,7 @@ long collatzStep(long input, bool &numStep);
 int main(){
 
 	//stores the top ten highest values and the steps to 1
-	long maxValues[2][10] = {{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0}};B
+	long maxValues[2][10] = {{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0}};
 
 	//the location of the minimum value in the array
 	long minVal = 0;
