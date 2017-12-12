@@ -31,7 +31,7 @@ public class Coll_arb{
 
 		//Main loop that goes through all values between 2 and 5000000000
 		//	Top value has the L suffix since literals are interpreted as integers	
-		for (BigInteger i = new BigInteger("1000000"); i.compareTo(BigInteger.valueOf(2)) == 1; i = i.subtract(BigInteger.ONE) ){
+		for (BigInteger i = new BigInteger("1000000000000000"); i.compareTo(BigInteger.valueOf(2)) == 1; i = i.subtract(BigInteger.ONE) ){
 
 			boolean alreadyexists = false;
 
@@ -106,17 +106,17 @@ public class Coll_arb{
 	
 		}
 	
-		/*
+		
 		//Now we perform a basic selection sort on the step count before printing
 		for(int i = 0; i < 9; i++){
 
-			long minValue = maxValues[0][i];
-			long minColNum = maxValues[1][i];
+			BigInteger minValue = maxValues[0][i];
+			BigInteger minColNum = maxValues[1][i];
 			int minLocale = i;
 	
 			for(int j = i+1; j < 10; j++){
 	
-				if(minValue < maxValues[0][j]){
+				if(minValue.compareTo(maxValues[0][j]) == -1){
 					minValue = maxValues[0][j];
 					minColNum = maxValues[1][j];
 					minLocale = j;
@@ -124,8 +124,8 @@ public class Coll_arb{
 	
 			}
 	
-			long tempVal = maxValues[0][i];
-			long tempNum = maxValues[1][i];
+			BigInteger tempVal = maxValues[0][i];
+			BigInteger tempNum = maxValues[1][i];
 	
 			maxValues[0][i] = minValue;
 			maxValues[0][minLocale] = tempVal;
@@ -133,7 +133,7 @@ public class Coll_arb{
 			maxValues[1][i] = minColNum;
 			maxValues[1][minLocale] = tempNum;
 	
-		}*/
+		}
 
 		//print the maxValues array
 		for(int i = 0; i < 10; i++){
